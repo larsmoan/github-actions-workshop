@@ -1,5 +1,5 @@
 # The "display name", shown in the GitHub UI
-name: Build go program, test and lint
+name: Build go program, test and lint - dummy change
 
 # Trigger, run on push on any branch
 on: pull_request # Triggers when a pull request is opened or changed
