@@ -1,11 +1,28 @@
 # The "display name", shown in the GitHub UI
-name: Build and test
+name: Build go program and test
 
 # Trigger, run on push on any branch
 on:
   push:
 
 jobs:
+  lint:
+    name: Verify formatting
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21.x'
+      - name: Verify Go formatting
+        run: |
+          no_unformatted_files="$(gofmt -l "$(git ls-files '*.go')" | wc -l)"
+          if [ "$no_unformatted_files" -ne 0 ]; then
+            echo "There are unformatted Go files."
+            exit 1
+          fi
+
   test: # The 'build' job
     name: "Build application"
     runs-on: 'ubuntu-latest'
