@@ -12,9 +12,7 @@ jobs:
     - name: Use lowercase repository name as docker image name
      
       run: |
-        REPOSITORY=${{ github.repository }}
-        echo "DOCKER_IMAGE_NAME=$(echo $REPOSITORY | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_ENV"
-
+        echo "DOCKER_IMAGE_NAME=$(echo ${{github.repository}} | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_ENV"
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
