@@ -17,7 +17,7 @@ jobs:
           go-version: '1.21.x'
       - name: Verify Go formatting
         run: |
-          no_unformatted_files=$(gofmt -l "$(git ls-files '*.go') | wc -l)
+          no_unformatted_files=$"(gofmt -l "$(git ls-files '*.go') | wc -l)""
           if [ "$no_unformatted_files" -ne 0 ]; then
             echo "There are unformatted Go files."
             exit 1
