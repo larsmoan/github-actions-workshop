@@ -1,9 +1,8 @@
 # The "display name", shown in the GitHub UI
-name: Build go program and test
+name: Build go program, test and lint
 
 # Trigger, run on push on any branch
-on:
-  push:
+on: pull_request # Triggers when a pull request is opened or changed
 
 jobs:
   lint:
